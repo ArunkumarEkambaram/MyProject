@@ -12,6 +12,7 @@ using MyProject.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MyProject.Repositories;
 
 namespace MyProject
 {
@@ -32,6 +33,10 @@ namespace MyProject
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            //DI
+            services.AddScoped<IProductRepository, ProductRepository>();
+
             services.AddControllersWithViews();
             services.AddRazorPages();
         }
