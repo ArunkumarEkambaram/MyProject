@@ -9,5 +9,7 @@ namespace MyProject.Repositories
     public interface IProductRepository
     {
         IEnumerable<Product> GetProducts();
+
+        void AddNewProduct(Product product);
     }
 }

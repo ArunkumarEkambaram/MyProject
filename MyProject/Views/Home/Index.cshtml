@@ -16,7 +16,9 @@
                 <img src="~/Images/@product.ImageName" class="card-img-top" />
                 <p>@product.Description</p>
                 <div class="m-3">
-                    <p class="float-left">@product.Price</p>
+                    <p class="float-left">
+                        @string.Format("{0:C}", product.Price)
+                    </p>
                     <a href="#" class="btn btn-sm btn-success float-right">Buy Now</a>
                 </div>
             </div>
