@@ -63,14 +63,15 @@ namespace MyProject.Controllers
         {
             if (id == null)
             {
-                return BadRequest();
+                return BadRequest(); //400
             }
 
             var product = _productRepository.GetProductById(id.Value);
 
             if (product == null)
             {
-                return NotFound();
+                return View("ProductNotFound");
+               // return NotFound();
             }
 
             EditProductViewModel editProduct = new EditProductViewModel
