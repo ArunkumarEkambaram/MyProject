@@ -79,7 +79,7 @@ namespace MyProject.Controllers
                 Name = product.Name,
                 Price = product.Price,
                 Description = product.Description,
-                ExistingImageName = product.ImageName
+                ExistingImageName = product.ImageName               
             };
             return View(editProduct);
         }

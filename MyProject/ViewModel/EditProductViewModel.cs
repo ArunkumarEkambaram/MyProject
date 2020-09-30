@@ -9,7 +9,7 @@ namespace MyProject.ViewModel
     {
         public int Id { get; set; }
 
-        public string ExistingImageName { get; set; }
-       
+        public string ExistingImageName { get; set; }      
+
     }
 }

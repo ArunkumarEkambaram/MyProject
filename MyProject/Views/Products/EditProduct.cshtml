@@ -42,6 +42,17 @@
             </div>
         </form>
     </div>
+    <div class="col-md-2"></div>
+    <div class="col-md-4">
+        <div class="row">
+            <img id="img1" src="~/Images/@Model.ExistingImageName" style="max-width:200px" alt="Image of @Model.ExistingImageName" />
+        </div>
+        <hr />
+
+        <p>Preview New Image</p>
+        <img id="newImg" style="max-width:200px" />
+
+    </div>
 </div>
 
 <div>
@@ -54,8 +65,26 @@
     <script>
         $(function () {
             $("#imgProductFile").on("change", function () {
+                var file1 = document.getElementById("imgProductFile").files[0];               
                 var fileName = $(this).val().split("\\").pop();
                 $(this).next(".custom-file-label").html(fileName);
+
+                //Preview Image
+                var img = $("#newImg");
+                var reader = new FileReader();
+
+                if (file1) {
+                    reader.readAsDataURL(file1);
+                    console.log(reader);
+                }
+                else {
+                    img.src = "";
+                }
+
+                reader.onloadend = function () {                    
+                    img.attr("src", reader.result);                    
+                }
+
             });
         });
     </script>
