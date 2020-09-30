@@ -10,6 +10,10 @@ namespace MyProject.Repositories
     {
         IEnumerable<Product> GetProducts();
 
-        void AddNewProduct(Product product);
+        Product GetProductById(int id);
+
+        int AddNewProduct(Product product);
+
+        int EditProduct(Product product);
     }
 }

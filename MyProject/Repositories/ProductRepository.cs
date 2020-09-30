@@ -16,17 +16,39 @@ namespace MyProject.Repositories
             _dbContext = dbContext;
         }
 
-        public void AddNewProduct(Product product)
+        public int AddNewProduct(Product product)
         {
             if (product != null)
             {
                 _dbContext.Products.Add(product);
-                _dbContext.SaveChanges();
+                return _dbContext.SaveChanges();
             }
             else
             {
                 throw new NullReferenceException(nameof(product));
             }
+        }
+
+        public int EditProduct(Product product)
+        {
+            var productFromDb = _dbContext.Products.SingleOrDefault(p => p.Id == product.Id);
+            if (productFromDb != null)
+            {
+                productFromDb.Name = product.Name;
+                productFromDb.Description = product.Description;
+                productFromDb.Price = product.Price;
+                productFromDb.ImageName = product.ImageName;
+                return _dbContext.SaveChanges();
+            }
+            else
+            {
+                throw new NullReferenceException();
+            }
+        }
+
+        public Product GetProductById(int id)
+        {
+            return _dbContext.Products.SingleOrDefault(p => p.Id == id);
         }
 
         public IEnumerable<Product> GetProducts()

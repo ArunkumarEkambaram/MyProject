@@ -19,7 +19,7 @@ namespace MyProject.ViewModel
         [Required]
         public float Price { get; set; }
 
-        [Required]
+       // [Required]
         [Display(Name="Image File Name")]
         public IFormFile ImageName { get; set; }
     }
